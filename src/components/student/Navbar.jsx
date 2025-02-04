@@ -1,10 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
+import { AppContext } from "../../context/AppContext";
 
 const Navbar = () => {
   const isCourseListPage = location.pathname.includes("/course-list");
+  const { isEducator } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const { openSignIn } = useClerk();
   const { user } = useUser();
@@ -27,7 +30,14 @@ const Navbar = () => {
           {user && (
             <>
               {" "}
-              <button className="hover:text-[#ac00ce]">Become Educator</button>
+              <button
+                onClick={() => {
+                  navigate("/educator");
+                }}
+                className="hover:text-[#ac00ce]"
+              >
+                {isEducator ? "Educator Dashboard" : "Become Eduactor"}
+              </button>
               <Link to="/my-enrollments" className="hover:text-[#ac00ce]">
                 My Enrollments
               </Link>
@@ -51,8 +61,13 @@ const Navbar = () => {
         <div className="flex items-center gap-1 sm:gap-2 max-sm:text-xs">
           {user && (
             <>
-              <button className="hover:text-[#ac00ce]">
-                Become Educator |
+              <button
+                onClick={() => {
+                  navigate("/educator");
+                }}
+                className="hover:text-[#ac00ce]"
+              >
+                {isEducator ? "Educator Dashboard" : "Become Educator"}
               </button>
               <Link to="/my-enrollments" className="hover:text-[#ac00ce]">
                 My Enrollments

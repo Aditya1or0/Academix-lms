@@ -30,7 +30,7 @@ const SearchBar = ({ data }) => {
       />
       <button
         type="submit"
-        className=" bg-gradient-to-r from-[#ac00ce] to-[#6a00b8] hover:from-[#8a00b5] hover:to-[#590080] hover:bg-opacity-100 text-white md:px-10 px-7 md:py-3 py-2 mx-1 text-xl rounded-md"
+        className="bg-gradient-to-r from-[#ac00ce] to-[#6a00b8] hover:from-[#8a00b5] hover:to-[#590080] hover:bg-opacity-100 text-white md:px-10 px-7 md:py-3 py-2 mx-1 text-xl rounded-md"
       >
         Search
       </button>
