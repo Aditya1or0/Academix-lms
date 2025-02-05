@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="text-center  text-sm text-black/60 py-5 ">
-        Copyright 2025 - Academix All Rights Reserved
+        Copyright 2025 ©Academix All Rights Reserved
       </p>
     </footer>
   );
