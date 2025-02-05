@@ -7,13 +7,13 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-start px-8 md:px-0 justify-center gap-10 md:gap-32 border-b border-black/30 py-10">
         <div className="flex flex-col md:items-start md:mx-4 items-center w-full">
           <img src={assets.logo} alt="logo" className="w-36" />
-          <p className="mt-6 text-center md:text-left text-sm text-black/80">
-            Best Learning Platform
+          <p className="mt-6 text-center md:text-left text-sm text-black/60">
+            Best Learning Platform Powered by AI
           </p>
         </div>
         <div className="flex flex-col md:items-start items-center w-full">
           <h2 className="font-semibold text-gray-700 mb-2">Company</h2>
-          <ul className="flex md:flex-col w-fulll justify-between text-sm text-gray-500 md:space-y-2">
+          <ul className="flex md:flex-col w-fulll justify-between text-sm text-gray-500 md:space-y-2 gap-2">
             <li>
               <a href="#">Home</a>
             </li>
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-center  text-sm text-black/80 py-5 ">
+      <p className="text-center  text-sm text-black/60 py-5 ">
         Copyright 2025 - Academix All Rights Reserved
       </p>
     </footer>
