@@ -7,7 +7,13 @@ import { assets } from "../../assets/assets";
 const CourseDetails = () => {
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
-  const { allCourses, calculateRating } = useContext(AppContext);
+  const {
+    allCourses,
+    calculateRating,
+    calculateNoOfLectures,
+    calculateCourseDuration,
+    calculateChapterTime,
+  } = useContext(AppContext);
 
   const fetchCourseData = async () => {
     const findCourse = allCourses.find((course) => course._id === id);
@@ -35,7 +41,7 @@ const CourseDetails = () => {
             }}
           ></p>
           {/* course Rating */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 pt-3 pb-1 text-sm">
             <p>{calculateRating(courseData)}</p>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
@@ -51,7 +57,36 @@ const CourseDetails = () => {
                 />
               ))}
             </div>
-            <p className="text-gray-500">{courseData.courseRatings.length}</p>
+            <p className="text-purple-500">
+              ({courseData.courseRatings.length}{" "}
+              {courseData.courseRatings.length > 1 ? "Ratings" : "Rating"})
+            </p>
+            <p>
+              {courseData.enrolledStudents.length}{" "}
+              {courseData.enrolledStudents.length > 1 ? "Students" : "Student"}
+            </p>
+          </div>
+          <p className="text-sm">
+            Course by <span className="text-purple-600 underline">Aditya</span>
+          </p>
+          <div className="pt-8 text-gray-800">
+            <h2 className="font-semibold text-xl">Course Structure</h2>
+            <div className="pt-5">
+              {courseData?.courseContent.map((chapter, index) => (
+                <div key={index}>
+                  <div>
+                    <div>
+                      <img src={assets.down_arrow_icon} alt="downarrowicon" />
+                      <p>{chapter.chapterTitle}</p>
+                    </div>
+                    <p>
+                      {chapter.chapterContent.length} Lectures -{" "}
+                      {calculateChapterTime(chapter)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
