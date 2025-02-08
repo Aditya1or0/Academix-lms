@@ -89,6 +89,26 @@ const CourseDetails = () => {
                       {calculateChapterTime(chapter)}
                     </p>
                   </div>
+                  <div>
+                    <ul>
+                      {chapter.chapterContent.map((lecture, i) => (
+                        <li key={i}>
+                          <img
+                            src={assets.play_icon}
+                            alt="playicon"
+                            className="w-4 h-4 mt-1"
+                          />
+                          <div>
+                            <p>{lecture.lectureTitle}</p>
+                            <div>
+                              {lecture.isPreviewFree && <p>Preview</p>}
+                              <p>{calculateNoOfLectures(lecture)}</p>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
