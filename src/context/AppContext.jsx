@@ -50,11 +50,14 @@ export const AppContextProvider = ({ children }) => {
   //function to calculate no of lecture in course
   const calculateNoOfLectures = (course) => {
     let totalLecture = 0;
-    course.courseContent.forEach((chapter) => {
-      if (Array.isArray(chapter.chapterContent)) {
-        totalLecture += chapter.chapterContent.length;
-      }
-    });
+    // Check if course.courseContent is an array before calling forEach
+    if (Array.isArray(course.courseContent)) {
+      course.courseContent.forEach((chapter) => {
+        if (Array.isArray(chapter.chapterContent)) {
+          totalLecture += chapter.chapterContent.length;
+        }
+      });
+    }
     return totalLecture;
   };
 
