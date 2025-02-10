@@ -149,6 +149,17 @@ const CourseDetails = () => {
               )}
             </div>
           </div>
+          <div className="py-20 text-sm md:text-default">
+            <h3 className="text-xl font-semibold text-gray-800">
+              Course Description
+            </h3>
+            <p
+              className="pt-3"
+              dangerouslySetInnerHTML={{
+                __html: courseData?.courseDescription,
+              }}
+            ></p>
+          </div>
         </div>
 
         {/* right col */}
