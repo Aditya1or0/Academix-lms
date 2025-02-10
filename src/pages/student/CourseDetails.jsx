@@ -8,7 +8,7 @@ import humanizeDuration from "humanize-duration";
 const CourseDetails = () => {
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
-  const [openSection, setOpenSection] = useState(0);
+  const [openSection, setOpenSection] = useState({}); // State initialized as an object
   const {
     allCourses,
     calculateRating,
@@ -24,10 +24,13 @@ const CourseDetails = () => {
 
   useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [id, allCourses]); // Fetch again when ID changes
 
   const toggleSection = (index) => {
-    setOpenSection((prev) => ({ ...prev, [index]: !prev[index] }));
+    setOpenSection((prev) => ({
+      ...prev,
+      [index]: !prev[index], // Toggle the specific section by index
+    }));
   };
 
   return courseData && courseData.courseContent ? (
@@ -101,7 +104,7 @@ const CourseDetails = () => {
                       </p>
                     </div>
                     <div
-                      className={`overflow-hidden transition-all duration-3000 max-h-96 ${
+                      className={`overflow-hidden transition-all duration-300 max-h-96 ${
                         openSection[index] ? "max-h-96" : "max-h-0"
                       }`}
                     >
