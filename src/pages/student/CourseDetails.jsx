@@ -93,7 +93,13 @@ const CourseDetails = () => {
                       onClick={() => toggleSection(index)}
                     >
                       <div className="flex items-center gap-2">
-                        <img src={assets.down_arrow_icon} alt="downarrowicon" />
+                        <img
+                          src={assets.down_arrow_icon}
+                          alt="downarrowicon"
+                          className={`transform transition-transform ${
+                            openSection[index] ? "rotate-180" : ""
+                          }`}
+                        />
                         <p className="font-medium md:text-base text-sm">
                           {chapter.chapterTitle}
                         </p>
