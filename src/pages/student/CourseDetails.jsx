@@ -163,7 +163,19 @@ const CourseDetails = () => {
         </div>
 
         {/* right col */}
-        <div></div>
+        <div className="max-w-course-card z-10 shadow-custom-card rounded-t md:rounded-none overflow-hidden bg-white min-2-[300px] sm:min-w-[420px]">
+          <img src={courseData.courseThumbnail} alt="courseThumbnail" />
+          <div className="pt-5">
+            <img
+              src={assets.time_left_clock_icon}
+              alt="clockIcon"
+              className="w-3.5"
+            />
+            <p className="text-red-500">
+              <span className="font-medium">5 Days left</span>
+            </p>
+          </div>
+        </div>
       </div>
     </>
   ) : (
