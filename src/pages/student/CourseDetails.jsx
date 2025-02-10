@@ -154,11 +154,11 @@ const CourseDetails = () => {
               Course Description
             </h3>
             <p
-              className="pt-3"
+              className="pt-3 rich-text"
               dangerouslySetInnerHTML={{
                 __html: courseData?.courseDescription,
               }}
-            ></p>
+            />
           </div>
         </div>
 
