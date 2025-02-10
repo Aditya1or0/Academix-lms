@@ -15,6 +15,7 @@ const CourseDetails = () => {
     calculateNoOfLectures,
     calculateCourseDuration,
     calculateChapterTime,
+    currency,
   } = useContext(AppContext);
 
   const fetchCourseData = async () => {
@@ -165,15 +166,57 @@ const CourseDetails = () => {
         {/* right col */}
         <div className="max-w-course-card z-10 shadow-custom-card rounded-t md:rounded-none overflow-hidden bg-white min-2-[300px] sm:min-w-[420px]">
           <img src={courseData.courseThumbnail} alt="courseThumbnail" />
-          <div className="pt-5">
-            <img
-              src={assets.time_left_clock_icon}
-              alt="clockIcon"
-              className="w-3.5"
-            />
-            <p className="text-red-500">
-              <span className="font-medium">5 Days left</span>
-            </p>
+          <div className="p-5">
+            <div className="flex items-center gap-2">
+              <img
+                src={assets.time_left_clock_icon}
+                alt="clockIcon"
+                className="w-3.5"
+              />
+              <p className="text-red-500">
+                <span className="font-medium">5 Days left</span>
+              </p>
+            </div>
+            <div className="flex gap-3 items-center pt-2">
+              <p className="text-gray-800 md:text-4xl text-2xl font-semibold">
+                {currency}{" "}
+                {courseData.coursePrice -
+                  (
+                    (courseData.discount * courseData.coursePrice) /
+                    100
+                  ).toFixed(2)}
+              </p>
+              <p className="md:text-lg text-gray-500 line-through">
+                {currency} {courseData.coursePrice}
+              </p>
+              <p className="md:text-lg text-gray-500">
+                {courseData.discount}% off
+              </p>
+            </div>
+            <div className="flex items-center text-sm md:text-default gap-4 pt-2 md:pt-4 text-gray-500">
+              <div className="flex items-center gap-1">
+                <img src={assets.star} alt="starIcon" className="w-3.5" />
+                <p>{calculateRating(courseData)}</p>
+              </div>
+              <div className="h-4 w-px bg-gray-500/40"></div>
+              <div className="flex items-center gap-1">
+                <img
+                  src={assets.time_clock_icon}
+                  alt="clockIcon"
+                  className="w-3.5"
+                />
+                <p>{calculateCourseDuration(courseData)}</p>
+              </div>
+              <div className="h-4 w-px bg-gray-500/40"></div>
+              <div className="flex items-center gap-1">
+                <img
+                  src={assets.time_clock_icon}
+                  alt="clockIcon"
+                  className="w-3.5"
+                />
+                <p>{calculateNoOfLectures(courseData)} Lession</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
