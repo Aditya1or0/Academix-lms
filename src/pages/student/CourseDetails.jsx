@@ -8,7 +8,7 @@ import humanizeDuration from "humanize-duration";
 const CourseDetails = () => {
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
-  const [openSection, setOpenSection] = useState({}); // State initialized as an object
+  const [openSection, setOpenSection] = useState({});
   const {
     allCourses,
     calculateRating,
@@ -24,12 +24,12 @@ const CourseDetails = () => {
 
   useEffect(() => {
     fetchCourseData();
-  }, [id, allCourses]); // Fetch again when ID changes
+  }, [id, allCourses]);
 
   const toggleSection = (index) => {
     setOpenSection((prev) => ({
       ...prev,
-      [index]: !prev[index], // Toggle the specific section by index
+      [index]: !prev[index],
     }));
   };
 
